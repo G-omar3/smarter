@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigation</title>
+    <link rel="stylesheet" href="accueil.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <ul>
+        <li><a href="accueil.html" id="accueil">Accueil</a></li>
+        <li><a href="#programme">Programme</a></li>
+        <li><a href="#contact" id="contact">Contact</a></li>
+      </ul>
+      <div class="login-logo">
+        <!-- Afficher un lien différent selon l'état de connexion -->
+        <a href="#" id="auth-link">
+          <img src="R (1).png" alt="Login" />
+        </a>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <h1>Bienvenue sur notre site</h1>
+    </div>
+
+    <script>
+      window.onload = function () {
+        // Vérification de l'état de connexion
+        fetch("/check-session") // Remplacez par un endpoint qui vérifie l'état de la session
+          .then((response) => response.json())
+          .then((data) => {
+            const authLink = document.getElementById("auth-link");
+            const authImage = authLink.querySelector("img"); // Image dans le lien
+
+            if (data.isLoggedIn) {
+              authLink.href = "/profil.html"; 
+              authImage.alt = "Profil";
+              authImage.src = "R (1).png"; // Remplacez par l'icône de profil
+            } else {
+              // Si l'utilisateur n'est pas connecté, afficher un lien vers la page de connexion
+              authLink.href = "/login.html"; // Lien vers la page de connexion
+              authImage.alt = "Login"; // Changer l'alt de l'image
+              authImage.src = "R (1).png"; // Remplacez par l'icône de connexion
+            }
+          })
+          .catch((error) =>
+            console.error("Erreur de vérification de la session", error)
+          );
+      };
+    </script>
+  </body>
+</html>

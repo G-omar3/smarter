@@ -1,0 +1,227 @@
+/* Style général de la page */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #1d2b64, #f8cdda);
+  min-height: 100vh;
+}
+
+/* Barre de navigation */
+.navbar {
+  background-color: #3a4b7d;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  margin: 0 15px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: #0056b3;
+}
+
+.navbar .login-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.navbar .login-logo a {
+  display: flex;
+  align-items: center;
+}
+
+/* Contenu principal de la page */
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100vh - 80px);
+  text-align: center;
+  color: #1d2b64;
+  padding: 20px;
+}
+
+/* Style du profil */
+#profileInfo {
+  background: linear-gradient(
+    to right,
+    #1d2b64,
+    #f8cdda
+  ); /* Dégradé linéaire pour le fond du footer */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600px;
+  margin-top: 30px;
+  text-align: left;
+}
+
+/* Informations de l'utilisateur */
+#profileInfo h2 {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center; /* Centre le texte horizontalement */
+}
+
+#profileInfo p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#profileInfo p strong {
+  color: white;
+  margin-left: 100px; /* Ajoute de l'espace entre l'étiquette (Nom :) et le nom utilisateur */
+}
+
+/* Photo de profil */
+#profileImageContainer {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Footer */
+/* Style du contenu principal */
+.main-content {
+  padding-bottom: 60px; /* Ajouter un espace pour éviter que le footer chevauche le bouton de déconnexion */
+}
+
+/* Style du bouton de déconnexion */
+.logout-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Bouton de déconnexion */
+#logoutBtn {
+  background-color: #3f5a87; /* Une couleur compatible avec le dégradé */
+  color: white; /* Texte en blanc pour un bon contraste */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#logoutBtn:hover {
+  background-color: #f8cdda;
+}
+
+/* Footer */
+footer {
+  position: relative;
+  padding: 20px 0;
+  text-align: center;
+  background: linear-gradient(
+    to right,
+    #1d2b64,
+    #f8cdda
+  ); /* Dégradé linéaire pour le fond du footer */
+  bottom: 0;
+  width: 100%;
+  margin-top: 20px; /* Assurez-vous qu'il n'est pas trop proche du contenu */
+}
+#profileInfo p span {
+  margin-left: 150px; /* Ajoute de l'espace entre l'étiquette (Nom :) et le nom utilisateur */
+}
+/* Conteneur des boutons */
+/* Conteneur pour les deux boutons */
+.buttons-container {
+  display: flex; /* Utilise flexbox pour aligner les boutons horizontalement */
+  gap: 20px; /* Ajoute de l'espace entre les boutons */
+  justify-content: center; /* Centre les boutons horizontalement */
+  align-items: center; /* Aligne verticalement les boutons */
+  margin-top: 20px; /* Optionnel, ajoute un espace au-dessus des boutons */
+}
+
+/* Style pour les boutons */
+button {
+  background-color: #3f5a87; /* Une couleur compatible avec le dégradé */
+  color: white; /* Texte en blanc pour un bon contraste */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-flex; /* Assure une gestion correcte de la hauteur */
+  align-items: center; /* Aligne verticalement le contenu du bouton */
+  justify-content: center; /* Assure que le texte est centré dans le bouton */
+}
+
+button:hover {
+  background-color: #f8cdda;
+}
+
+/* Style du formulaire de mise à jour */
+#updateFormContainer {
+  margin-top: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+button {
+  background-color: #3f5a87;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f8cdda;
+}

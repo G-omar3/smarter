@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Utilisateur</title>
+    <link rel="stylesheet" href="profil.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <ul>
+        <li><a href="accueil.html" id="accueil">Accueil</a></li>
+        <li><a href="#programme">Programme</a></li>
+        <li><a href="#contact" id="contact">Contact</a></li>
+      </ul>
+      <div class="login-logo">
+        <a href="#" id="auth-link">
+          <img src="R (1).png" alt="Login" />
+        </a>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div id="profileImageContainer">
+        <img id="profileImage" src="R (1).png" alt="Photo de profil" />
+      </div>
+
+      <div id="profileInfo">
+        <h2>Vos informations :</h2>
+        <p><strong>Nom :</strong> <span id="userNameInfo"></span></p>
+        <p><strong>Email :</strong> <span id="userEmail"></span></p>
+        <p><strong>ID Utilisateur :</strong> <span id="userId"></span></p>
+      </div>
+
+      <div class="buttons-container">
+        <button id="updateProfileBtn">Mettre à jour</button>
+        <button id="logoutBtn">Déconnexion</button>
+      </div>
+
+      <!-- Formulaire de mise à jour -->
+      <div id="updateFormContainer" style="display: none">
+        <h3>Modifier vos informations :</h3>
+        <form id="updateForm">
+          <label for="updateName">Nom :</label>
+          <input type="text" id="updateName" name="name" />
+
+          <label for="updateEmail">Email :</label>
+          <input type="email" id="updateEmail" name="email" />
+
+          <label for="updatePassword">Mot de passe :</label>
+          <input type="password" id="updatePassword" name="password" />
+
+          <button type="submit">Enregistrer les modifications</button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 Votre Application</p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        fetch("/profile-data")
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.user) {
+              document.getElementById("userNameInfo").textContent =
+                data.user.NAME;
+              document.getElementById("userEmail").textContent =
+                data.user.EMAIL;
+              document.getElementById("userId").textContent = data.user.ID;
+
+              // Pré-remplir le formulaire avec les données actuelles
+              document.getElementById("updateName").value = data.user.NAME;
+              document.getElementById("updateEmail").value = data.user.EMAIL;
+            } else {
+              window.location.href = "/";
+            }
+          })
+          .catch((error) =>
+            console.error(
+              "Erreur lors du chargement des données du profil",
+              error
+            )
+          );
+
+        document
+          .getElementById("logoutBtn")
+          .addEventListener("click", function () {
+            fetch("/logout", {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+              .then((response) => {
+                if (response.ok) {
+                  window.location.href = "/";
+                } else {
+                  console.error("Erreur de déconnexion");
+                }
+              })
+              .catch((error) =>
+                console.error("Erreur lors de la déconnexion", error)
+              );
+          });
+      };
+    </script>
+  </body>
+</html>
